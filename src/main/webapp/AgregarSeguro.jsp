@@ -15,6 +15,8 @@
 		 <a href="ListarSeguro.jsp">ListarSeguros</a> <br>
 		<h1>
 			<b> Agregar Seguros</b>
+			
+		
 		</h1>
 	</div>
 
