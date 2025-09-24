@@ -18,7 +18,16 @@
 			
 		
 		</h1>
+		
+		
+	<form method="get" action="AgregarSeguro.jsp">
+		
+    		Descripción: <input type="text" name="txtNombre" /><br/><br/>
+    		Tipo de Seguro: <br/><br/>
+    		Costo de Contratación: <input type="text" name="txtCosto" /><br/><br/>
+		</form>
 	</div>
+	
 
 </body>
 </html>
