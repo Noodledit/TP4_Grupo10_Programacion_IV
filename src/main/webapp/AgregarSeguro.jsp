@@ -21,10 +21,14 @@
 		
 		
 	<form method="get" action="AgregarSeguro.jsp">
-		
+	
+			Id Seguro: <br/><br/>
     		Descripción: <input type="text" name="txtNombre" /><br/><br/>
     		Tipo de Seguro: <br/><br/>
     		Costo de Contratación: <input type="text" name="txtCosto" /><br/><br/>
+    		Costo Máximo Asegurado: <input type="text" name="txtCostoMaximo" /><br/><br/>
+    		
+    		<input type="submit" value="Aceptar" name="btnAceptar"/>
 		</form>
 	</div>
 	
