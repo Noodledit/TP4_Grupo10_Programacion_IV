@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.SeguroDAO;
+import dao.SeguroDao;
 import dominio.Seguro;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +35,7 @@ public class AgregarSeguroServlet extends HttpServlet {
         double costoAsegurado = Double.parseDouble(costoAseguradoStr);
 
         Seguro seg = new Seguro(descripcion, idTipo, costoContratacion, costoAsegurado);
-        boolean ok = new SeguroDAO().insert(seg);
+        boolean ok = new SeguroDao().insert(seg);
 
         if (ok) {
             response.sendRedirect("Inicio.jsp");
