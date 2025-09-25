@@ -13,6 +13,24 @@ import java.sql.ResultSet;
 
 
 public class SeguroDao {
+
+	    public boolean insert(Seguro s) {
+	        try (Connection conn = Conexion.getConnection();
+	             PreparedStatement ps = conn.prepareStatement("INSERT INTO seguros (descripcion, idTipo, costoContratacion, costoAsegurado) VALUES (?, ?, ?, ?)")) {
+
+	            ps.setString(1, s.getDescripcion());
+	            ps.setInt(2, s.getIdTipo());
+	            ps.setDouble(3, s.getCostoContracion());
+	            ps.setDouble(4, s.getCostoAsegurado());
+
+	            return ps.executeUpdate() > 0;
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+	    }
+
+	
 	
 	public List<TipoSeguro> listarTipoSeguros(){
 		
