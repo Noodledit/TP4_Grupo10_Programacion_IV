@@ -60,10 +60,9 @@ public class SeguroDao {
 		
 	}
 	
-	public List<TipoSeguro> FiltrarTipoSeguros(int id ){
-		List<TipoSeguro> ListaTipoSeguro = new ArrayList<>();
-		
-		String consulta = "SELECT * FROM tipoSeguros WHERE idTipo = ?";
+	public List<Seguro> FiltrarPorTipo(int id ){
+		List<Seguro> ListaSeguros = new ArrayList<>();
+		String consulta = "SELECT * FROM Seguros WHERE idTipo = ?";
 		
 		try(Connection conn = Conexion.getConnection();
 		PreparedStatement pst = conn.prepareStatement(consulta)){
@@ -73,10 +72,13 @@ public class SeguroDao {
 			ResultSet Listado = pst.executeQuery();
 			
 			while(Listado.next()) {
-				TipoSeguro ts = new TipoSeguro();
-				ts.setIdTipo(Listado.getInt("idTipo"));
-				ts.setDescripcion(Listado.getString("descripcion"));		
-				ListaTipoSeguro.add(ts);
+				Seguro s = new Seguro();
+				s.setIdSeguro(Listado.getInt("idSeguro"));
+                s.setDescripcion(Listado.getString("descripcion"));
+                s.setIdTipo(Listado.getInt("idTipo"));
+                s.setCostoContracion(Listado.getDouble("costoContracion"));
+                s.setCostoAsegurado(Listado.getDouble("costoAsegurado"));	
+				ListaSeguros.add(s);
 			}
 			
 			
@@ -85,7 +87,7 @@ public class SeguroDao {
 			
 		}
 		
-		return ListaTipoSeguro;
+		return ListaSeguros;
 
 		
 	}
