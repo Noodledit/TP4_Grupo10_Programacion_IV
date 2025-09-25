@@ -1,7 +1,8 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dominio.TipoSeguro;
-import dao.SeguroDAO;
+import dao.SeguroDao;
 
 @WebServlet("/ListarSegurosServlet")
 public class ListarSegurosServlet extends HttpServlet {
@@ -30,10 +31,10 @@ public class ListarSegurosServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("/ListarSeguro.jsp");
-		SeguroDAO sDao = new SeguroDAO();
+		SeguroDao sDao = new SeguroDao();
 
 		if (request.getParameter("btnFiltrar") != null) {
-			ArrayList<TipoSeguro> listaTS = sDao.listarTipoSeguros();
+			List<TipoSeguro> listaTS = sDao.listarTipoSeguros();
 			request.setAttribute("ListaTS", listaTS);
 			request.getDispatcherType();
 			rd.forward(request, response);
