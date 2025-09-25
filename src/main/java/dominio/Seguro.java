@@ -17,6 +17,15 @@ public class Seguro {
 		this.costoContracion = costoContracion;
 		this.costoAsegurado = costoAsegurado;
 	}
+	
+	//sin id para inserciones
+	public Seguro(String descripcion, int idTipo, double costoContracion, double costoAsegurado) {
+		this.descripcion = descripcion;
+		this.idTipo = idTipo;
+		this.costoContracion = costoContracion;
+		this.costoAsegurado = costoAsegurado;
+	}
+	
 
 	public int getIdSeguro() {
 		return idSeguro;

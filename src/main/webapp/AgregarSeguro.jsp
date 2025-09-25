@@ -24,7 +24,12 @@
 	
 			Id Seguro: <br/><br/>
     		Descripción: <input type="text" name="txtNombre" /><br/><br/>
-    		Tipo de Seguro: <br/><br/>
+    		Tipo de Seguro: 
+    		<select name="txtTipo">
+            <option value="1">Automotor</option>
+            <option value="2">Hogar</option>
+            <option value="3">Vida</option>
+       		 </select><br/><br/>
     		Costo de Contratación: <input type="text" name="txtCosto" /><br/><br/>
     		Costo Máximo Asegurado: <input type="text" name="txtCostoMaximo" /><br/><br/>
     		
