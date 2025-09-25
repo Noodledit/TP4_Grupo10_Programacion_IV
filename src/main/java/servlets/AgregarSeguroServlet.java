@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.SeguroDao;
+import dao.SeguroDAO;
 import dominio.Seguro;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +10,8 @@ import java.io.IOException;
 
 @WebServlet("/AgregarSeguroServlet")
 public class AgregarSeguroServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-	@Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
@@ -24,10 +23,10 @@ public class AgregarSeguroServlet extends HttpServlet {
         String costoAseguradoStr = request.getParameter("txtCostoMaximo");
 
         if (descripcion == null || descripcion.trim().isEmpty()
-                || idTipoStr == null || !idTipoStr.matches("\\d+")
+                || idTipoStr == null || idTipoStr.trim().isEmpty() || !idTipoStr.matches("\\d+")
                 || costoContratacionStr == null || !costoContratacionStr.matches("\\d+(\\.\\d+)?")
                 || costoAseguradoStr == null || !costoAseguradoStr.matches("\\d+(\\.\\d+)?")) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Datos inválidos");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Datos inválidos o incompletos");
             return;
         }
 
@@ -36,14 +35,12 @@ public class AgregarSeguroServlet extends HttpServlet {
         double costoAsegurado = Double.parseDouble(costoAseguradoStr);
 
         Seguro seg = new Seguro(descripcion, idTipo, costoContratacion, costoAsegurado);
-        
-        boolean ok = new SeguroDao().insert(seg);
+        boolean ok = new SeguroDAO().insert(seg);
 
         if (ok) {
             response.sendRedirect("Inicio.jsp");
         } else {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "No se pudo insertar");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "No se pudo insertar el seguro");
         }
     }
 }
-
