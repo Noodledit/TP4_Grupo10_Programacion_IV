@@ -76,7 +76,7 @@ public class SeguroDao {
 				s.setIdSeguro(Listado.getInt("idSeguro"));
                 s.setDescripcion(Listado.getString("descripcion"));
                 s.setIdTipo(Listado.getInt("idTipo"));
-                s.setCostoContracion(Listado.getDouble("costoContracion"));
+                s.setCostoContracion(Listado.getDouble("costoContratacion"));
                 s.setCostoAsegurado(Listado.getDouble("costoAsegurado"));	
 				ListaSeguros.add(s);
 			}
